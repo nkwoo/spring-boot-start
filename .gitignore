@@ -30,15 +30,3 @@ out/
 
 ### VS Code ###
 .vscode/
-
-### Spring Source ###
-/gradlew
-/gradlew.bat
-/gradle/
-application-dev.properties
-*.class
-bin/
-
-## Angular build File ###
-src/main/resources/templates/
-src/main/resources/static/
