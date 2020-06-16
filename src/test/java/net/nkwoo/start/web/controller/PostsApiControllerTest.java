@@ -18,6 +18,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -97,7 +98,46 @@ public class PostsApiControllerTest {
         assertThat(allPosts.get(0).getTitle()).isEqualTo(expectedTitle);
 
         assertThat(allPosts.get(0).getContent()).isEqualTo(expectedContent);
+    }
 
+    @Test
+    @DisplayName("Auditing 테스트 응용")
+    public void baseTimeTest() {
+        postsRepository.save(Posts.builder()
+                        .title("title")
+                        .content("content")
+                        .author("test@naver.com")
+                        .build());
 
+        List<Posts> postsList = postsRepository.findAll();
+
+        Posts posts = postsList.get(0);
+
+        System.out.println(">>>>> create = " + posts.getCreatedDate() + ", modified = " + posts.getModifiedDate());
+
+        Long updateId = posts.getId();
+        String expectedTitle = "title2";
+        String expectedContent = "content2";
+
+        PostsUpdateRequestDto requestDto = PostsUpdateRequestDto.builder()
+                .title(expectedTitle)
+                .content(expectedContent)
+                .build();
+
+        String url = "http://localhost:" + port + "/api/v1/posts/" + updateId;
+
+        HttpEntity<PostsUpdateRequestDto> requestEntity = new HttpEntity<>(requestDto);
+
+        ResponseEntity<Long> responseEntity = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, Long.class);
+
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
+
+        assertThat(responseEntity.getBody()).isGreaterThan(0L);
+
+        postsList = postsRepository.findAll();
+
+        posts = postsList.get(0);
+
+        System.out.println(">>>>> create = " + posts.getCreatedDate() + ", modified = " + posts.getModifiedDate());
     }
 }
