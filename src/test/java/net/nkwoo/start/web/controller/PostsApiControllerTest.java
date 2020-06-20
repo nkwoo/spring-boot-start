@@ -18,8 +18,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -98,6 +98,28 @@ public class PostsApiControllerTest {
         assertThat(allPosts.get(0).getTitle()).isEqualTo(expectedTitle);
 
         assertThat(allPosts.get(0).getContent()).isEqualTo(expectedContent);
+    }
+
+    @Test
+    @DisplayName("게시글 삭제 테스트 진행")
+    public void postDelete() {
+        Posts posts = postsRepository.save(Posts.builder()
+                .title("testPost")
+                .content("test")
+                .author("test@naver.com")
+                .build());
+
+        Long postId = posts.getId();
+
+        assertThat(postId).isGreaterThan(0L);
+
+        String url = "http://localhost:" + port + "/api/v1/posts/" + postId;
+
+        restTemplate.delete(url);
+
+        Optional<Posts> searchPost = postsRepository.findById(postId);
+
+        assertThat(searchPost).isEmpty();
     }
 
     @Test
