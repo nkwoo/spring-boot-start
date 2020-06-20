@@ -1,0 +1,9 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: "Your Google Cloud Client Id"
+            client-secret: "Your Google Cloud Client Secret Key"
+            scope: profile,email
