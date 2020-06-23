@@ -1,0 +1,19 @@
+spring:
+  jpa:
+    show-sql: true
+  h2:
+    console:
+      enabled: true
+  session:
+    store-type: jdbc
+
+  #Test OAuth
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: test
+            client-secret: test
+            scope: profile,email
