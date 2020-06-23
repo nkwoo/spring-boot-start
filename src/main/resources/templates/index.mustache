@@ -9,13 +9,13 @@
         <div class="row">
             <div class="col-md-6">
                 <a href="/posts/save" role="button" class="btn btn-primary">글등록</a>
-                {{#userName}}
-                    <span id="user">{{userName}}님 어서오세요!</span>
+                {{#name}}
+                    <span id="user">{{name}}님 어서오세요!</span>
                     <a href="/logout" class="btn btn-info active" role="button">Logout</a>
-                {{/userName}}
-                {{^username}}
+                {{/name}}
+                {{^name}}
                     <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google 로그인</a>
-                {{/username}}
+                {{/name}}
             </div>
         </div>
         <br>
