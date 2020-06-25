@@ -1,7 +1,7 @@
 #!/bin/bash
 
 REPOSITORY=/home/ubuntu/app/step1
-PROJECT_NAME=boot-start
+PROJECT_NAME=spring-boot-start
 
 cd $REPOSITORY/$PROJECT_NAME/
 
@@ -11,7 +11,7 @@ git pull
 
 echo "> Project Build Start"
 
-./gradlew build
+./gradlew build -x test
 
 echo "> step1 Directory Move"
 
@@ -43,5 +43,5 @@ echo "> JAR Name : $JAR_NAME"
 
 echo "> Starting Application..."
 
-nohup java -jar $REPOSITORY/$JAR_NAME 2>&1 &
+nohup java -jar -Dspring.config.location=classpath:/application.yaml,/home/ubuntu/app/application-oauth.yaml $REPOSITORY/$JAR_NAME 2>&1 &
 
