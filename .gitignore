@@ -31,5 +31,6 @@ out/
 ### VS Code ###
 .vscode/
 
-## Oauth ##
+## Oauth & DB ##
 application-oauth.yaml
+application-real-db.yaml

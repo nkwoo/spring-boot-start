@@ -11,6 +11,7 @@ git pull
 
 echo "> Project Build Start"
 
+chmod +x ./gradlew
 ./gradlew build -x test
 
 echo "> step1 Directory Move"
@@ -43,5 +44,5 @@ echo "> JAR Name : $JAR_NAME"
 
 echo "> Starting Application..."
 
-nohup java -jar -Dspring.config.location=classpath:/application.yaml,/home/ubuntu/app/application-oauth.yaml $REPOSITORY/$JAR_NAME 2>&1 &
+nohup java -jar -Dspring.config.location=classpath:/application.yaml,/home/ubuntu/app/application-oauth.yaml,/home/ubuntu/app/application-real-db.yaml -Dspring.profiles.active=real $REPOSITORY/$JAR_NAME 2>&1 &
 

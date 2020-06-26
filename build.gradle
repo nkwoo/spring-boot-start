@@ -21,6 +21,7 @@ dependencies {
 
 	implementation 'org.projectlombok:lombok'
 	implementation 'com.h2database:h2'
+	implementation 'org.mariadb.jdbc:mariadb-java-client:2.6.1'
 
 	annotationProcessor 'org.projectlombok:lombok'
 	testCompileOnly 'org.projectlombok:lombok'

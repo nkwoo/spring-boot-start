@@ -1,0 +1,10 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    hikari:
+      jdbc-url: jdbc:mariadb://<Maria Database Url>/<Maria Database Name>
+      username: Maria User Id
+      password: Maria User Password
+      driver-class-name: org.mariadb.jdbc.Driver
