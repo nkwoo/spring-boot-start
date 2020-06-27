@@ -33,10 +33,5 @@ chmod +x $JAR_NAME
 
 echo "> Starting Application..."
 
-nohup java -jar \
--Dspring.config.location=classpath:/application-real.yaml,\
-                          /home/ubuntu/app/application-oauth.yaml,\
-                          /home/ubuntu/app/application-real-db.yaml\
- -Dspring.profiles.active=real\
-  $JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
+nohup java -jar -Dspring.config.location=classpath:/application-real.yaml,/home/ubuntu/app/application-oauth.yaml,/home/ubuntu/app/application-real-db.yaml -Dspring.profiles.active=real $JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
 
