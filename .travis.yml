@@ -25,12 +25,22 @@ deploy:
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_SECRET_KEY
-
     bucket: boot-start-build
     region: ap-northeast-2
     skip_cleanup: true
     acl: private
     local_dir: deploy
+    wait-until-deployed: true
+
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: boot-start-build
+    key: spring-boot-start.zip
+    bundle_type: zip
+    application: boot-start
+    deployment_group: boot-start-group
+    region: ap-northeast-2
     wait-until-deployed: true
 
 # CI Run Alert Email
