@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REPOSITORY=/home/ubuntu/app/step1
+REPOSITORY=/home/ubuntu/app/step2
 PROJECT_NAME=spring-boot-start
 
 echo "> Build File Copy"
