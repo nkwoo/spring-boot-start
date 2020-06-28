@@ -9,7 +9,7 @@ cp $REPOSITORY/zip/*.jar $REPOSITORY/
 
 echo "> Now Working Application pid Check..."
 
-CURRENT_PID=$(pgrep -fl spring-boot-start | grep jar | awk '{print $1}')
+CURRENT_PID=$(pgrep -fl spring-boot-start | awk '{print $1}')
 
 if [ -z "$CURRENT_PID" ]; then
   echo "> No Search Application. The Application Will Start Soon.."
