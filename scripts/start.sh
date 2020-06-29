@@ -27,6 +27,6 @@ echo "> Run boot-start of Profile = $IDLE_PROFILE"
 
 nohup java -jar \
 -Dspring.config.location=classpath:/application-$IDLE_PROFILE.yaml,\
-/home/ubuntu/app/application-oauth.yaml,/home/ubuntu/app/application-real-db.yaml\
+/home/ubuntu/app/application-oauth.yaml,/home/ubuntu/app/application-real-db.yaml \
 -Dspring.profiles.active=$IDLE_PROFILE $JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
 
