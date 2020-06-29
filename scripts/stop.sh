@@ -8,11 +8,11 @@ IDLE_PORT=$(find_idle_port)
 
 IDLE_PID=$(lsof -ti tcp:${IDLE_PORT})
 
-if [ -z ${IDLE_PORT} ]
+if [ -z ${IDLE_PID} ]
 then
   echo "> Not working.... No More Exit Application"
 else
-  echo "> $IDLE_PORT working Application PID Check.."
-  kill -15 ${IDLE_PORT}
+  echo "> $IDLE_PID working Application PID Check.."
+  kill -15 ${IDLE_PID}
   sleep 5
 fi
