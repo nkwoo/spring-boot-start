@@ -24,7 +24,7 @@ function find_idle_profile() {
 
 # Search Idle Port
 
-function find_idle_prot() {
+function find_idle_port() {
   IDLE_PROFILE=$(find_idle_profile)
 
   if [ ${IDLE_PROFILE} == real1 ]

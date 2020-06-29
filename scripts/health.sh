@@ -9,7 +9,7 @@ IDLE_PORT=$(find_idle_port)
 
 echo "> Health Check Start"
 echo "> IDLE_PORT: $IDLE_PORT"
-ech "> curl -s http://localhost:${IDLE_PORT}/profile "
+echo "> curl -s http://localhost:${IDLE_PORT}/profile "
 sleep 10
 
 for RETRY_COUNT in {1..10}
@@ -19,7 +19,7 @@ do
 
   # Check "real" in Response
 
-  if [ ${UP_COUNT} -ge 1]
+  if [ ${UP_COUNT} -ge 1 ]
   then
     echo "> Health Check Success"
     switch_proxy
